@@ -2,3 +2,4 @@
 2. Modfiy Windows/System32/drivers/etc/host add your selected host name
 3. Run: docker-compose up -d --build
 4. Install generated certification /php/ssl
+5. Visit https://yourhostname
