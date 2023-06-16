@@ -10,6 +10,8 @@ echo "ServerName $param1" >> /etc/apache2/apache2.conf
 a2enmod rewrite ssl
 mkdir /etc/apache2/sites-available/ssl
 
+cd /etc/apache2/sites-available/ssl && openssl req -x509 -out $param1.crt -keyout $param1.key -newkey rsa:2048 -nodes -sha256 -subj "/CN=$param1" -addext "subjectAltName = DNS:$param1" -days 365
+
 # Create vhost file
 touch /etc/apache2/sites-enabled/custom.conf
 echo "LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
