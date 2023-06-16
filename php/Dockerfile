@@ -4,8 +4,5 @@ FROM php:7.4-apache
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
-RUN a2enmod rewrite ssl
-RUN mkdir /etc/apache2/sites-available/ssl
-
-# launch
-CMD ["/run.sh"]
+# Launch USE OWN HOST NAME FOR FIRST PARAMETER!
+CMD ["/run.sh","YOUR_HOST_NAME"]
