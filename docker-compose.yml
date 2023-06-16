@@ -1,0 +1,35 @@
+version: '1'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretpassword
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+  test-app:
+    build: .\php
+    hostname: rabacsatest3
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .\src:/var/www/html/
+      - .\php\sites-enabled:/etc/apache2/sites-enabled
+      - .\php\ssl:/etc/apache2/sites-available/ssl
+    links:
+      - db
+    depends_on:
+      - db

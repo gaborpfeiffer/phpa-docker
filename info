@@ -1,0 +1,3 @@
+https://time2hack.com/dockerize-php-app-with-apache-on-https/
+openssl req -x509 -out rabacsacmstest3.crt -keyout rabacsacmstest3.key -newkey rsa:2048 -nodes -sha256 -subj "/CN=rabacsacmstest3" -addext "subjectAltName = DNS:rabacsacmstest3" -days 365
+
