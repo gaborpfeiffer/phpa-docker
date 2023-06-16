@@ -27,7 +27,6 @@ services:
       - 443:443
     volumes:
       - .\src:/var/www/html/
-      - .\php\sites-enabled:/etc/apache2/sites-enabled
       - .\php\ssl:/etc/apache2/sites-available/ssl
     links:
       - db
